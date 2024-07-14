@@ -39,7 +39,9 @@ import Dashboard from './pages/Dashboard';
 import UserProfile from './pages/UserProfile';
 import ProductManagement from './pages/ProductManagement';
 import CategoryManagement from './pages/CategoryManagement';
-import Layout from './components/Layout/Layout';  // Ensure correct import
+import Layout from './components/Layout/Layout';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PrivateRoute = ({ element: Element, ...rest }) => {
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
@@ -63,6 +65,7 @@ const App = () => {
           </Route>
         </Routes>
       </Router>
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
     </Provider>
   );
 };

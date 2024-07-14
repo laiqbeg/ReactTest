@@ -5,6 +5,8 @@ import { addProduct, updateProduct } from '../../redux/actions/productActions';
 import Select from 'react-select';
 import InputField from '../Controls/InputField.js';
 import SelectField from '../Controls/SelectField.js';
+import { showToast } from '../Controls/toast.js'
+import showAlert from '../Controls/alertManager.js';
 
 const ProductForm = ({ product }) => {
     const { register, handleSubmit, formState: { errors }, control, reset } = useForm({ defaultValues: product || {} });
@@ -19,8 +21,12 @@ const ProductForm = ({ product }) => {
     const onSubmit = (data) => {
         if (product) {
             dispatch(updateProduct(data));
+            showToast('Product updated successfully!', 'success');
+            //showAlert(`Product updated successfully`, 'success');
         } else {
             dispatch(addProduct(data));
+            showToast('Product added successfully!', 'success');
+            //showAlert(`Product added successfully`, 'success');
         }
         reset({
             name: '',
